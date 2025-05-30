@@ -29,6 +29,12 @@ export default function storeReducer (store, action = {}){
       starships : starships
       }
     }
+    case 'add-favorites':{
+      
+    }
+    case 'remove-favorite':{
+
+    }
     default:
       throw new Error('Unknown action');
   }
