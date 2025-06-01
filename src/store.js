@@ -36,7 +36,7 @@ export default function storeReducer (store, action = {}){
       }
     }
     case 'remove-favorite':{
-      const newFavorites = store.favorites.filter((favorite) => favorite.uid !== action.payload.uid);
+      const newFavorites = store.favorites.filter((favorite) => !(favorite.uid === action.payload.uid && favorite.type === action.payload.type)) ;
       return {
         ...store, 
         favorites: [...newFavorites]
