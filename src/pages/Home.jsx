@@ -8,16 +8,14 @@ export const Home = () => {
 
 	useEffect(() => {
 
-		const get_people = async () => {
+		const getPeople = async () => {
 			const loadPeopleData = await fetch('https://www.swapi.tech/api/people/', {
 				method: 'GET'
 			})
 			const reponsePeople = await loadPeopleData.json();
 
-			console.log('reponsePeople', reponsePeople)
-
 			const detailedPeople = await Promise.all(
-				reponsePeople.results.foreach(async (person) => {
+				reponsePeople.results.map(async (person) => {
 					const res = await fetch(person.url);
 					const data = await res.json();
 					return {
@@ -34,59 +32,11 @@ export const Home = () => {
 			});
 
 		};
-		const get_planets = async () => {
-			const loadPlanetsData = await fetch('https://www.swapi.tech/api/planets/', {
-				method: 'GET'
-			})
-			const reponsePlanet = await loadPlanetsData.json();
-			const detailedPlanets = await Promise.all(
-				reponsePlanet.results.map(async (planet) => {
-					const res = await fetch(planet.url);
-					const data = await res.json();
-					return {
-						...planet,
-						...data.result.properties
 
-					};
-				})
-			)
-			dispatch({
-				type: 'set-planets',
-				payload: {
-					planets: detailedPlanets
-				}
-			});
-		};
-		const get_starShips = async () => {
-			const loadShipsData = await fetch('https://www.swapi.tech/api/starships/', {
-				method: 'GET'
-			})
-			const reponseShips = await loadShipsData.json();
-			const detailedShips = await Promise.all(
-				reponseShips.results.map(async (ship) => {
-					const res = await fetch(ship.url);
-					const data = await res.json();
-					return {
-						...ship,
-						...data.result.properties
-					}
-				})
-
-			)
-			dispatch({
-				type: 'set-starships',
-				payload: {
-					starships: detailedShips
-				}
-			})
-		};
-
-		get_people();
-		//get_planets();
-		//get_starShips();
+		getPeople();
 
 
-	}, [store])
+	}, [])
 
 	return (
 		<div className="container">

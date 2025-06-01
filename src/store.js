@@ -11,43 +11,35 @@ export default function storeReducer (store, action = {}){
     case 'set-people':{
       const {people} = action.payload;
       return{
-         ...store,
-      people : people
+        ...store,
+        people : people
       }
     }
     case 'set-planets':{
       const {planets} = action.payload;
       return{
-         ...store,
-      planets : planets
+        ...store,
+        planets : planets
       }
     }
     case 'set-starships':{
       const {starships} = action.payload;
       return{
-         ...store,
-      starships : starships
+        ...store,
+        starships : starships
       }
     }
-    case 'add-favorites':{
-      console.log("store", store.favorites)
+    case 'add-favorite':{
       return{
         ...store,
-        favorites:[...store.favorites, action.payload]
+        favorites: [...store.favorites, action.payload.favorite]
       }
     }
     case 'remove-favorite':{
-      console.log(action.payload.favorites)
-
-      const newFavorites = store.favorites.filter((favorite) =>  { 
-        console.log('favorite', favorite)
-        console.log(favorite.uid, action.payload.favorites.uid);
-        return favorite.uid !== action.payload.favorites.uid })
-      console.log(newFavorites)
-      
+      const newFavorites = store.favorites.filter((favorite) => favorite.uid !== action.payload.uid);
       return {
-        ...store,
-        favorites: newFavorites
+        ...store, 
+        favorites: [...newFavorites]
       }
     }
     default:
