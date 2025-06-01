@@ -14,8 +14,10 @@ export const Home = () => {
 			})
 			const reponsePeople = await loadPeopleData.json();
 
+			console.log('reponsePeople', reponsePeople)
+
 			const detailedPeople = await Promise.all(
-				reponsePeople.results.map(async (person) => {
+				reponsePeople.results.foreach(async (person) => {
 					const res = await fetch(person.url);
 					const data = await res.json();
 					return {
@@ -60,7 +62,7 @@ export const Home = () => {
 				method: 'GET'
 			})
 			const reponseShips = await loadShipsData.json();
-			const detailedShips = Promise.all(
+			const detailedShips = await Promise.all(
 				reponseShips.results.map(async (ship) => {
 					const res = await fetch(ship.url);
 					const data = await res.json();
@@ -80,15 +82,11 @@ export const Home = () => {
 		};
 
 		get_people();
-		get_planets();
-		get_starShips();
+		//get_planets();
+		//get_starShips();
 
 
-	}, [])
-
-	console.log(store.people);
-	console.log(store.planets);
-	console.log(store.starships);
+	}, [store])
 
 	return (
 		<div className="container">
