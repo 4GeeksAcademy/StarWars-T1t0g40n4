@@ -1,4 +1,5 @@
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
+import { Link } from "react-router-dom";
 
 export const Planet = ({planet}) => {
 
@@ -37,13 +38,13 @@ export const Planet = ({planet}) => {
         )
         if (isFavorite)
             return (
-                <button onClick={()=>removeFavorites(planet)} className="aling-items-start btn btn-primary">
+                <button onClick={()=>removeFavorites(planet)} className="align-items-start btn btn-primary">
                     <i className="fa-solid fa-heart"></i>
                 </button>
             )
         else {
             return (
-                <button onClick={()=>addFavorites(planet)} className="aling-items-start btn btn-primary">
+                <button onClick={()=>addFavorites(planet)} className="align-items-start btn btn-primary">
                     <i className="fa-regular fa-heart"></i>
                 </button>    
             )
@@ -62,7 +63,7 @@ export const Planet = ({planet}) => {
                     <p className="card-text">{planet.gravity}</p>
                     <p className="card-text">{planet.population}</p>
                     <div className="d-flex justify-content-between">
-                        <button href="/people" className="aling-items-start btn btn-primary">Learn more</button>
+                        <Link to={`/Single/${planet.uid}`} className="align-items-start btn btn-primary">See details</Link>
                         {getFavoriteButton()}
                     </div>
                 </div>

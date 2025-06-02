@@ -16,10 +16,10 @@ export const Navbar = () => {
     }
 
 	return (
-		<nav className="navbar navbar-light bg-light">
+		<nav className="navbar navbar-dark bg-dark">
 			<div className="container">
 				<Link to="/">
-					<span className="navbar-brand mb-0 h1">React Boilerplate</span>
+					<span className="navbar-brand mb-0 h1"><img src="https://www.citypng.com/public/uploads/preview/hd-white-star-wars-logo-png-701751694787021te08lp5kwd.png" alt="Star Wars" style={{ height: "50px" }} /></span>
 				</Link>
 				<div className="ml-auto">
 					<div className="dropdown">
