@@ -54,14 +54,14 @@ export const Starship = ({starship}) => {
 
     return (
         <div className="container">
-            <div className="card" style={{minWidth:"200px"}} key={starship.uid}>
+            <div className="card h-100" style={{minWidth:"200px"}} key={starship.uid}>
                 <img src={`https://raw.githubusercontent.com/tbone849/star-wars-guide/refs/heads/master/build/assets/img/starships/${starship.uid}.jpg`} className="card-img-top" alt={starship.name}/>
                 <div className="card-body">
-                    <h5 className="card-title">{starship.name}</h5>
-                    <p className="card-text">{starship.uid}</p>
+                    <h5 className="card-title">Name: {starship.name}</h5>
+                    <p className="card-text">Id: {starship.uid}</p>
                     <p className="card-text">{starship.name}</p>
-                    <p className="card-text">{starship.cargo_capacity}</p>
-                    <p className="card-text">{starship.max_atmosphering_speed}</p>
+                    <p className="card-text">Capacity: {starship.cargo_capacity}</p>
+                    <p className="card-text">Max speed: {starship.max_atmosphering_speed}</p>
                     <div className="d-flex justify-content-between">
                         <Link to={`/Single/${starship.uid}`} className="align-items-start btn btn-primary">See details</Link>
                         {getFavoriteButton()}

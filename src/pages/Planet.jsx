@@ -54,14 +54,14 @@ export const Planet = ({planet}) => {
 
     return (
         <div className="container">
-            <div className="card" style={{minWidth:"200px"}} key={planet.uid}>
+            <div className="card h-100" style={{minWidth:"200px"}} key={planet.uid}>
                 <img src={`https://raw.githubusercontent.com/tbone849/star-wars-guide/refs/heads/master/build/assets/img/planets/${planet.uid}.jpg`} className="card-img-top" alt={planet.name}/>
                 <div className="card-body">
-                    <h5 className="card-title">{planet.name}</h5>
-                    <p className="card-text">{planet.uid}</p>
-                    <p className="card-text">{planet.terrain}</p>
-                    <p className="card-text">{planet.gravity}</p>
-                    <p className="card-text">{planet.population}</p>
+                    <h5 className="card-title">Name: {planet.name}</h5>
+                    <p className="card-text">Id: {planet.uid}</p>
+                    <p className="card-text">Terrain: {planet.terrain}</p>
+                    <p className="card-text">Gravity : {planet.gravity}</p>
+                    <p className="card-text">Population: {planet.population}</p>
                     <div className="d-flex justify-content-between">
                         <Link to={`/Single/${planet.uid}`} className="align-items-start btn btn-primary">See details</Link>
                         {getFavoriteButton()}
